@@ -22,8 +22,8 @@ def process_24_hrs(data):
     date_list = re.findall(pattern, data)
     message_list = re.split(pattern, data)[1:]
     df = pd.DataFrame({"user_message": message_list, "message_date": date_list})
-    df["date_list"] = pd.to_datetime(df["date_list"], format="%d/%m/%Y, %H:%M - ")
-    df.rename(columns={"date_list": "date"}, inplace=True)
+    df["message_date"] = pd.to_datetime(df["message_date"], format="%d/%m/%Y, %H:%M - ")
+    df.rename(columns={"message_date": "date"}, inplace=True)
     users = []
     messages = []
     for message in df["user_message"]:
