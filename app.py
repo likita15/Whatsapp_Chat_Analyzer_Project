@@ -8,9 +8,9 @@ import seaborn as sns
 import preprocessor as pre
 import helper as hel
 
-link = r"C:\Users\aditya\Desktop\Developement\Data Analysis\whatsapp_chat_analyzer\uno.txt"
-f = open(link,'r',encoding = 'utf-8')
-data = f.read()
+#link = r"C:\Users\aditya\Desktop\Developement\Data Analysis\whatsapp_chat_analyzer\uno.txt"
+#f = open(link,'r',encoding = 'utf-8')
+#data = f.read()
 
 st.sidebar.title('Whatsapp Chat Analyzer')
 
