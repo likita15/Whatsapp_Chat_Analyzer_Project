@@ -8,9 +8,7 @@ import seaborn as sns
 import preprocessor as pre
 import helper as hel
 
-# link = r"C:\Users\aditya\Desktop\Developement\Data Analysis\whatsapp_chat_analyzer\uno.txt"
-# f = open(link,'r',encoding = 'utf-8')
-# data = f.read()
+
 
 st.sidebar.title('Whatsapp Chat Analyzer')
 
@@ -118,13 +116,13 @@ if uploaded_file is not None:
                x = hel.most_busy_users(df)
                data = {
                'Users': x.index,
-               'Messages': x.values
+               'No_of_Messages': x.values
                }
                chart_data = pd.DataFrame(data)
-               chart_data.set_index('Users', inplace=True)
+               
 
 
-               st.bar_chart(chart_data,color = "#51ffcb" , width = 0.5 , height = 600)
+               st.bar_chart(chart_data,y = 'No_of_Messages' , x = 'Users' , color = "#51ffcb" , width = 0.5 , height = 600)
 
             with col2:
                new_df = hel.percentage_of_user(df)
@@ -160,11 +158,13 @@ if uploaded_file is not None:
             'numbers': most_common_df[1].values
             }
             chart_data = pd.DataFrame(data)
-            chart_data.set_index('words', inplace=True)
+            # chart_data.set_index('words', inplace=True)
 
             plt.xticks(rotation = 'vertical')
 
-            st.bar_chart(chart_data,color = "#ee82ee" , width = 0.5 , height = 600)
+            st.bar_chart(chart_data, x = 'words' , y = 'numbers' ,color = "#ee82ee" , width = 0.5 , height = 600)
+           
+
          except:
             st.header(':red[No Words Found]')
       
@@ -181,11 +181,10 @@ if uploaded_file is not None:
                   'numbers': emoji_data['no._of_times_used'].values
                }
                   chart_data = pd.DataFrame(data)
-                  chart_data.set_index('numbers', inplace=True)
-
+                  
                   
 
-                  st.bar_chart(chart_data,color = "#46C7A7" , width = 0.5 , height = 600)
+                  st.bar_chart(chart_data,y='emojis' , x = 'numbers' , color = "#46C7A7" , width = 0.5 , height = 600)
          else:
             st.header(':violet[No Emojis used]')
 
